@@ -6,12 +6,14 @@ $(function () {
   // });
   let text = "#text-box";
   let error = "#error";
+
+  // 追加ボタンを押したときの処理
   $("#btn").on("click", function () {
+    // テキストボックスが空のとき
     $(text).val();
     if ($(text).val() === "") {
       $(text).addClass("sample");
       $(error).text("入力必須です");
-      $(error).css("color", "red");
     } else {
       $("ul").append("<li>" + $(text).val() + "</li>");
       $(text).val("");
@@ -19,11 +21,12 @@ $(function () {
       $(text).removeClass("sample");
     }
   });
+
+  // テキストボックスに20文字以上入力されたとき
   $(text).on("input", function () {
     if ($(text).val().length >= 20) {
       $(text).addClass("sample");
       $(error).text("20 文字以上は入力できません");
-      $(error).css("color", "red");
       $("#btn").prop("disabled", true);
     } else {
       $(error).text("");
